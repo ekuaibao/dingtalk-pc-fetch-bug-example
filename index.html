@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <script>
+    function testCallback() {
+      location.replace('#abc')
+        // 期望hash变成abc
+      console.log(location.hash == '#abc')
+      console.log(location.href)
+    }
+    // 因为跨站，请求可能会失败。请求成功或失败对这个测试没有影响。无论请求成功或者失败都调用回调。
+    fetch('http://www.baidu.com/index.html').then(testCallback, testCallback)
+  </script>
+</body>
+
+</html>
